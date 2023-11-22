@@ -1,8 +1,8 @@
 $(document).ready(function() {
   // Remove "Build with Sphinx" text in the footer:
-  var elem = $("footer div[role='contentinfo']").get(0);
-  while (elem.nextSibling)
-    elem.nextSibling.remove();
+  // var elem = $("footer div[role='contentinfo']").get(0);
+  // while (elem.nextSibling)
+  //   elem.nextSibling.remove();
 
   // Code block header:
   var $highlight = $("div.rst-content div.highlight");
