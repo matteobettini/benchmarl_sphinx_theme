@@ -1,8 +1,9 @@
 import os
 import os.path as osp
 import re
-from setuptools import find_packages, setup
 from typing import List, Optional
+
+from setuptools import find_packages, setup
 
 __version__ = "0.1.0"
 
@@ -29,8 +30,8 @@ setup(
     author_email="mb2389@cal.cam.ac.uk",
     url="https://github.com/pyg-team/pyg_sphinx_theme",
     install_requires=[
-        "sphinx>=5.1.1",
-        "sphinx_rtd_theme>=1.0",
+        "sphinx>=7.2.6",
+        "sphinx_rtd_theme>=1.3",
     ],
     package_data={
         "benchmarl_sphinx_theme": [
