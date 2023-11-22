@@ -13,51 +13,51 @@
 /*}*/
 
 /* Navigation */
-.logo {
-  max-height: 150px;
-}
-.wy-side-nav-search {
-  background: rgb(243,244,247);
-}
-/*.wy-side-nav-search > div.version,*/
-.wy-side-nav-search > a {
-  color: black;
-}
-.wy-side-nav-search input[type="text"] {
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  font-size: inherit;
-}
-.wy-menu-vertical li.current a,
-.wy-menu-vertical li.toctree-l1.current > a {
-  border: none;
-}
+/*.logo {*/
+/*  max-height: 150px;*/
+/*}*/
+/*.wy-side-nav-search {*/
+/*  background: rgb(243,244,247);*/
+/*}*/
+/*!*.wy-side-nav-search > div.version,*!*/
+/*.wy-side-nav-search > a {*/
+/*  color: black;*/
+/*}*/
+/*.wy-side-nav-search input[type="text"] {*/
+/*  border: none;*/
+/*  box-shadow: none;*/
+/*  border-radius: 0;*/
+/*  font-size: inherit;*/
+/*}*/
+/*.wy-menu-vertical li.current a,*/
+/*.wy-menu-vertical li.toctree-l1.current > a {*/
+/*  border: none;*/
+/*}*/
 
-.wy-nav-top {
-  background: rgb(243,244,247);
-  color: #343131;
-  background-image: url(https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/benchmarl_sphinx_theme/static/img/benchmarl_logo.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 36px;
-}
+/*.wy-nav-top {*/
+/*  background: rgb(243,244,247);*/
+/*  color: #343131;*/
+/*  background-image: url(https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/benchmarl_sphinx_theme/static/img/benchmarl_logo.png);*/
+/*  background-repeat: no-repeat;*/
+/*  background-position: center;*/
+/*  background-size: 36px;*/
+/*}*/
 
-.wy-nav-top {
-  padding: 0.4em .8em 0.6em;
-}
+/*.wy-nav-top {*/
+/*  padding: 0.4em .8em 0.6em;*/
+/*}*/
 
-.wy-nav-top a {
-  display: none;
-}
+/*.wy-nav-top a {*/
+/*  display: none;*/
+/*}*/
 
-/* Footer */
-footer, footer a, footer a:visited {
-  color: white !important;
-}
-footer div {
-  color: grey;  /* Reset */
-}
+/*!* Footer *!*/
+/*footer, footer a, footer a:visited {*/
+/*  color: white !important;*/
+/*}*/
+/*footer div {*/
+/*  color: grey;  !* Reset *!*/
+/*}*/
 
 /* Titles */
 h1 {
@@ -106,25 +106,25 @@ em.sig-param span.default_value {
 }
 
 /* Function Details */
-html.writer-html5 .rst-content dl.simple {
-  display: inherit;
-}
-html.writer-html5 .rst-content dl.simple dt,
-html.writer-html5 .rst-content dl.simple dd {
-  margin: 0;
-  padding: 0;
-}
-html.writer-html5 .rst-content dl.simple dt {
-  text-transform: uppercase !important;
-  margin-bottom: 0 !important;
-  border: inherit !important;
-  background: none !important;
-  color: inherit !important;
-}
+/*html.writer-html5 .rst-content dl.simple {*/
+/*  display: inherit;*/
+/*}*/
+/*html.writer-html5 .rst-content dl.simple dt,*/
+/*html.writer-html5 .rst-content dl.simple dd {*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*}*/
+/*html.writer-html5 .rst-content dl.simple dt {*/
+/*  text-transform: uppercase !important;*/
+/*  margin-bottom: 0 !important;*/
+/*  border: inherit !important;*/
+/*  background: none !important;*/
+/*  color: inherit !important;*/
+/*}*/
 /* Fix property layout */
-dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.citation):not(.glossary):not(.simple) .property {
-  display: inline !important;
-}
+/*dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.citation):not(.glossary):not(.simple) .property {*/
+/*  display: inline !important;*/
+/*}*/
 
 /* Tables */
 .wy-table-responsive table td,
