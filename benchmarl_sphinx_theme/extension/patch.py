@@ -145,7 +145,7 @@ def setup(app):
     app.add_role("youtube", logo_role)
     app.add_role("torchrl", logo_role)
 
-    app.add_js_file("js/on_benchmarl_load.js")
+    # app.add_js_file("js/on_benchmarl_load.js")
 
     return {
         "parallel_read_safe": True,
