@@ -37,7 +37,7 @@
 .wy-nav-top {
   background: rgb(243,244,247);
   color: #343131;
-  background-image: url(https://raw.githubusercontent.com/pyg-team/pyg_sphinx_theme/master/pyg_sphinx_theme/static/img/pyg_logo.png);
+  background-image: url(https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/pyg_sphinx_theme/static/img/benchmarl_logo.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 36px;
@@ -66,7 +66,7 @@ h1 {
   max-width: 100%;
   font-size: 38px;
   overflow-wrap: break-word;
-  background: linear-gradient(92deg,#ff8200 0%,#9b3794 32%,#512dab 52%,#1f87e6 100%);
+  background: linear-gradient(92deg, #dd492a 0%,#1f87e6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -353,14 +353,7 @@ span.inline-logo {
   background-position-y: 0;
 }
 }
-span.inline-logo.pyg {
-  padding-left: 28px;
-  background-image: url(../img/pyg_logo.svg);
-}
-span.inline-logo.pyf {
-  padding-left: 24px;
-  background-image: url(../img/pytorch_frame_logo.svg);
-}
+
 span.inline-logo.python {
   padding-left: 24px;
   background-image: url(../img/python_logo.svg);
@@ -382,30 +375,13 @@ span.inline-logo.colab {
 span.inline-logo.github {
   background-image: url(../img/github_logo.svg);
 }
-span.inline-logo.lightning {
-  padding-left: 25px;
-  background-image: url(../img/lightning_logo.svg);
-}
 span.inline-logo.wandb {
   background-size: auto 80%;
   background-image: url(../img/wandb_logo.svg);
 }
-span.inline-logo.stanford {
-  padding-left: 20px;
-  background-image: url(../img/stanford_logo.svg);
-}
 span.inline-logo.slack {
   padding-left: 28px;
   background-image: url(../img/slack_logo.svg);
-}
-span.inline-logo.captum {
-  background-image: url(../img/captum_logo.png);
-}
-span.inline-logo.ogb {
-  padding-left: 52px;
-  background-image: url(../img/ogb_logo.png);
-  background-size: auto 70%;
-  background-position-x: 0;
 }
 span.inline-logo.youtube {
   padding-left: 30px;

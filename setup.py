@@ -1,11 +1,10 @@
 import os
 import os.path as osp
 import re
+from setuptools import find_packages, setup
 from typing import List, Optional
 
-from setuptools import find_packages, setup
-
-__version__ = '0.1.0'
+__version__ = "0.1.0"
 
 
 def package_files(
@@ -19,30 +18,31 @@ def package_files(
         for name in names:
             if whitelist is not None and not re.search(pattern, name):
                 continue
-            paths.append(osp.join('..', path, name))
+            paths.append(osp.join("..", path, name))
     return paths
 
 
 setup(
-    name='pyg_sphinx_theme',
+    name="benchmarl_sphinx_theme",
     version=__version__,
-    author='PyG Team',
-    author_email='team@pyg.org',
-    url='https://github.com/pyg-team/pyg_sphinx_theme',
+    author="BenchMARL Team",
+    author_email="mb2389@cal.cam.ac.uk",
+    url="https://github.com/pyg-team/pyg_sphinx_theme",
     install_requires=[
-        'sphinx==5.1.1',
-        'sphinx_rtd_theme>=1.0',
+        "sphinx>=5.1.1",
+        "sphinx_rtd_theme>=1.0",
     ],
     package_data={
-        'pyg_sphinx_theme': [
-            'theme.conf',
-            *package_files('pyg_sphinx_theme/static',
-                           ['css', 'js', 'png', 'svg']),
+        "benchmarl_sphinx_theme": [
+            "theme.conf",
+            *package_files(
+                "benchmarl_sphinx_theme/static", ["css", "js", "png", "svg"]
+            ),
         ]
     },
     entry_points={
-        'sphinx.html_themes': [
-            'pyg_sphinx_theme = pyg_sphinx_theme',
+        "sphinx.html_themes": [
+            "benchmarl_sphinx_theme = benchmarl_sphinx_theme",
         ]
     },
     packages=find_packages(),

@@ -1,8 +1,8 @@
+import sphinx.ext.autosummary.generate as autosummary
 from typing import List, Optional
 
-import sphinx.ext.autosummary.generate as autosummary
-from pyg_sphinx_theme.extension.logo import logo_role
-from pyg_sphinx_theme.extension.slack import SlackButton
+from benchmarl_sphinx_theme.extension.discord import DiscordButton
+from benchmarl_sphinx_theme.extension.logo import logo_role
 
 
 def monkey_patch_find_autosummary_in_lines(
@@ -19,16 +19,14 @@ def monkey_patch_find_autosummary_in_lines(
     import os.path as osp
     import re
 
-    autosummary_re = re.compile(r'^(\s*)\.\.\s+autosummary::\s*')
-    automodule_re = re.compile(
-        r'^\s*\.\.\s+automodule::\s*([A-Za-z0-9_.]+)\s*$')
-    module_re = re.compile(
-        r'^\s*\.\.\s+(current)?module::\s*([a-zA-Z0-9_.]+)\s*$')
-    autosummary_item_re = re.compile(r'^\s+(~?[_a-zA-Z][a-zA-Z0-9_.]*)\s*.*?')
-    recursive_arg_re = re.compile(r'^\s+:recursive:\s*$')
-    toctree_arg_re = re.compile(r'^\s+:toctree:\s*(.*?)\s*$')
-    template_arg_re = re.compile(r'^\s+:template:\s*(.*?)\s*$')
-    list_arg_re = re.compile(r'^\s+{% for\s*(.*?)\s*in\s*(.*?)\s*%}$')
+    autosummary_re = re.compile(r"^(\s*)\.\.\s+autosummary::\s*")
+    automodule_re = re.compile(r"^\s*\.\.\s+automodule::\s*([A-Za-z0-9_.]+)\s*$")
+    module_re = re.compile(r"^\s*\.\.\s+(current)?module::\s*([a-zA-Z0-9_.]+)\s*$")
+    autosummary_item_re = re.compile(r"^\s+(~?[_a-zA-Z][a-zA-Z0-9_.]*)\s*.*?")
+    recursive_arg_re = re.compile(r"^\s+:recursive:\s*$")
+    toctree_arg_re = re.compile(r"^\s+:toctree:\s*(.*?)\s*$")
+    template_arg_re = re.compile(r"^\s+:template:\s*(.*?)\s*$")
+    list_arg_re = re.compile(r"^\s+{% for\s*(.*?)\s*in\s*(.*?)\s*%}$")
 
     documented: list[autosummary.AutosummaryEntry] = []
 
@@ -37,7 +35,7 @@ def monkey_patch_find_autosummary_in_lines(
     template = None
     curr_module = module
     in_autosummary = False
-    base_indent = ''
+    base_indent = ""
 
     for line in lines:
         if in_autosummary:
@@ -58,43 +56,45 @@ def monkey_patch_find_autosummary_in_lines(
                 template = m.group(1).strip()
                 continue
 
-            # Begin of odified part by `pyg_sphinx_theme` #####################
+            # Begin of odified part by `benchmarl_sphinx_theme` #####################
             m = list_arg_re.match(line)
             if m:
                 obj_name = m.group(2).strip()
-                module_name, obj_name = obj_name.rsplit('.', maxsplit=1)
+                module_name, obj_name = obj_name.rsplit(".", maxsplit=1)
                 module = importlib.import_module(module_name)
                 for entry in getattr(module, obj_name):
                     documented.append(
                         autosummary.AutosummaryEntry(
-                            f'{module_name}.{entry}',
+                            f"{module_name}.{entry}",
                             toctree,
                             template,
                             recursive,
-                        ))
+                        )
+                    )
                 continue
-            # End of modified part by `pyg_sphinx_theme` ######################
+            # End of modified part by `benchmarl_sphinx_theme` ######################
 
-            if line.strip().startswith(':'):
+            if line.strip().startswith(":"):
                 continue
 
             m = autosummary_item_re.match(line)
             if m:
                 name = m.group(1).strip()
-                if name.startswith('~'):
+                if name.startswith("~"):
                     name = name[1:]
-                if curr_module and not name.startswith(f'{curr_module}.'):
-                    name = f'{curr_module}.{name}'
+                if curr_module and not name.startswith(f"{curr_module}."):
+                    name = f"{curr_module}.{name}"
                 documented.append(
                     autosummary.AutosummaryEntry(
                         name,
                         toctree,
                         template,
                         recursive,
-                    ))
+                    )
+                )
                 continue
 
-            if not line.strip() or line.startswith(f'{base_indent} '):
+            if not line.strip() or line.startswith(f"{base_indent} "):
                 continue
 
             in_autosummary = False
@@ -116,7 +116,8 @@ def monkey_patch_find_autosummary_in_lines(
                 autosummary.find_autosummary_in_docstring(
                     curr_module,
                     filename=filename,
-                ))
+                )
+            )
             continue
 
         m = module_re.match(line)
@@ -129,29 +130,22 @@ def monkey_patch_find_autosummary_in_lines(
 
 def setup(app):
     # Monkey-patch `sphinx.ext.autosummary.find_autosummary_in_lines`:
-    autosummary.find_autosummary_in_lines = (
-        monkey_patch_find_autosummary_in_lines)
+    autosummary.find_autosummary_in_lines = monkey_patch_find_autosummary_in_lines
 
-    app.add_directive('slack_button', SlackButton)
+    app.add_directive("slack_button", DiscordButton)
 
-    app.add_role('pyg', logo_role)
-    app.add_role('pyf', logo_role)
-    app.add_role('python', logo_role)
-    app.add_role('conda', logo_role)
-    app.add_role('pytorch', logo_role)
-    app.add_role('colab', logo_role)
-    app.add_role('github', logo_role)
-    app.add_role('lightning', logo_role)
-    app.add_role('wandb', logo_role)
-    app.add_role('stanford', logo_role)
-    app.add_role('slack', logo_role)
-    app.add_role('captum', logo_role)
-    app.add_role('ogb', logo_role)
-    app.add_role('youtube', logo_role)
+    app.add_role("python", logo_role)
+    app.add_role("conda", logo_role)
+    app.add_role("pytorch", logo_role)
+    app.add_role("colab", logo_role)
+    app.add_role("github", logo_role)
+    app.add_role("wandb", logo_role)
+    app.add_role("slack", logo_role)
+    app.add_role("youtube", logo_role)
 
-    app.add_js_file('js/on_pyg_load.js')
+    app.add_js_file("js/on_benchmarl_load.js")
 
     return {
-        'parallel_read_safe': True,
-        'parallel_write_safe': True,
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
     }

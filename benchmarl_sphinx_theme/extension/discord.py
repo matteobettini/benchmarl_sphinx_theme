@@ -3,17 +3,17 @@ from docutils.parsers.rst import Directive, directives
 from docutils.statemachine import StringList
 
 
-class SlackButton(Directive):
+class DiscordButton(Directive):
     option_spec = {
-        'title': directives.unchanged,
-        'url': directives.unchanged,
+        "title": directives.unchanged,
+        "url": directives.unchanged,
     }
 
     def run(self):
-        title = self.options.get('title', 'Join our Slack community!')
-        url = self.options.get('url', 'https://data.pyg.org/slack.html')
+        title = self.options.get("title", "Join our Discord community!")
+        url = self.options.get("url", "https://discord.com/invite/2XJdEenU")
 
-        rst = SLACK_TEMPLATE.format(title=title, url=url)
+        rst = DISCORD_TEMPLATE.format(title=title, url=url)
 
         callout_list = StringList(rst.split("\n"))
         callout = nodes.paragraph()
@@ -21,7 +21,7 @@ class SlackButton(Directive):
         return [callout]
 
 
-SLACK_TEMPLATE = """
+DISCORD_TEMPLATE = """
 .. raw:: html
 
   <a class="pyg-button" href="{url}" target="_blank" title="{title}">

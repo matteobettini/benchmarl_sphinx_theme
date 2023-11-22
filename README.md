@@ -1,1 +1,1 @@
-# PyG Sphinx Theme
+# BenchMARL Sphinx Theme
