@@ -132,7 +132,7 @@ def setup(app):
     # Monkey-patch `sphinx.ext.autosummary.find_autosummary_in_lines`:
     autosummary.find_autosummary_in_lines = monkey_patch_find_autosummary_in_lines
 
-    app.add_directive("slack_button", DiscordButton)
+    app.add_directive("discord_button", DiscordButton)
 
     app.add_role("python", logo_role)
     app.add_role("conda", logo_role)
