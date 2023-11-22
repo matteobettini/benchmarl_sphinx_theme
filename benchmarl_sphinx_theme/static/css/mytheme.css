@@ -37,7 +37,7 @@
 .wy-nav-top {
   background: rgb(243,244,247);
   color: #343131;
-  background-image: url(https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/pyg_sphinx_theme/static/img/benchmarl_logo.png);
+  background-image: url(https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/benchmarl_sphinx_theme/static/img/benchmarl_logo.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 36px;
