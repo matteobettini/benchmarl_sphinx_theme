@@ -19,7 +19,7 @@
 .wy-side-nav-search {
   background: rgb(243,244,247);
 }
-.wy-side-nav-search > div.version,
+/*.wy-side-nav-search > div.version,*/
 .wy-side-nav-search > a {
   color: black;
 }
