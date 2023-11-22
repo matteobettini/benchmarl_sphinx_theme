@@ -16,7 +16,6 @@ def monkey_patch_find_autosummary_in_lines(
     # https://github.com/sphinx-doc/sphinx/sphinx/ext/autosummary/generate.py
 
     import importlib
-    import os.path as osp
     import re
 
     autosummary_re = re.compile(r"^(\s*)\.\.\s+autosummary::\s*")
@@ -32,8 +31,8 @@ def monkey_patch_find_autosummary_in_lines(
 
     recursive = False
     toctree: Optional[str] = None
-    template = None
-    curr_module = module
+    template = ""
+    current_module = module
     in_autosummary = False
     base_indent = ""
 
@@ -48,7 +47,7 @@ def monkey_patch_find_autosummary_in_lines(
             if m:
                 toctree = m.group(1)
                 if filename:
-                    toctree = osp.join(osp.dirname(filename), toctree)
+                    toctree = os.path.join(os.path.dirname(filename), toctree)
                 continue
 
             m = template_arg_re.match(line)
@@ -73,28 +72,20 @@ def monkey_patch_find_autosummary_in_lines(
                     )
                 continue
             # End of modified part by `benchmarl_sphinx_theme` ######################
-
             if line.strip().startswith(":"):
-                continue
+                continue  # skip options
 
             m = autosummary_item_re.match(line)
             if m:
                 name = m.group(1).strip()
                 if name.startswith("~"):
                     name = name[1:]
-                if curr_module and not name.startswith(f"{curr_module}."):
-                    name = f"{curr_module}.{name}"
-                documented.append(
-                    autosummary.AutosummaryEntry(
-                        name,
-                        toctree,
-                        template,
-                        recursive,
-                    )
-                )
+                if current_module and not name.startswith(current_module + "."):
+                    name = f"{current_module}.{name}"
+                documented.append(AutosummaryEntry(name, toctree, template, recursive))
                 continue
 
-            if not line.strip() or line.startswith(f"{base_indent} "):
+            if not line.strip() or line.startswith(base_indent + " "):
                 continue
 
             in_autosummary = False
@@ -105,24 +96,21 @@ def monkey_patch_find_autosummary_in_lines(
             base_indent = m.group(1)
             recursive = False
             toctree = None
-            template = None
+            template = ""
             continue
 
         m = automodule_re.search(line)
         if m:
-            curr_module = m.group(1).strip()
+            current_module = m.group(1).strip()
             # recurse into the automodule docstring
             documented.extend(
-                autosummary.find_autosummary_in_docstring(
-                    curr_module,
-                    filename=filename,
-                )
+                find_autosummary_in_docstring(current_module, filename=filename)
             )
             continue
 
         m = module_re.match(line)
         if m:
-            curr_module = m.group(2)
+            current_module = m.group(2)
             continue
 
     return documented
@@ -145,7 +133,7 @@ def setup(app):
     app.add_role("youtube", logo_role)
     app.add_role("torchrl", logo_role)
 
-    # app.add_js_file("js/on_benchmarl_load.js")
+    app.add_js_file("js/on_benchmarl_load.js")
 
     return {
         "parallel_read_safe": True,
