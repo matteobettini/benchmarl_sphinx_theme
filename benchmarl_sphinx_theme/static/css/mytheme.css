@@ -379,6 +379,10 @@ span.inline-logo.wandb {
   background-size: auto 80%;
   background-image: url(../img/wandb_logo.svg);
 }
+span.inline-logo.torchrl {
+  padding-left: 28px;
+  background-image: url(../img/torchrl_logo.png);
+}
 span.inline-logo.slack {
   padding-left: 28px;
   background-image: url(../img/slack_logo.svg);

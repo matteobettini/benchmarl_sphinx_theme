@@ -1,6 +1,6 @@
-import sphinx.ext.autosummary.generate as autosummary
 from typing import List, Optional
 
+import sphinx.ext.autosummary.generate as autosummary
 from benchmarl_sphinx_theme.extension.discord import DiscordButton
 from benchmarl_sphinx_theme.extension.logo import logo_role
 
@@ -142,6 +142,7 @@ def setup(app):
     app.add_role("wandb", logo_role)
     app.add_role("slack", logo_role)
     app.add_role("youtube", logo_role)
+    app.add_role("torchrl", logo_role)
 
     app.add_js_file("js/on_benchmarl_load.js")
 
