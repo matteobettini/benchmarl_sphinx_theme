@@ -52,6 +52,10 @@
 }
 
 /* Footer */
+.rst-versions {
+  text-align: left !important;
+}
+
 footer, footer a, footer a:visited {
   color: white !important;
 }
