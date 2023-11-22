@@ -17,6 +17,7 @@ def monkey_patch_find_autosummary_in_lines(
 
     import importlib
     import re
+    import os
 
     autosummary_re = re.compile(r"^(\s*)\.\.\s+autosummary::\s*")
     automodule_re = re.compile(r"^\s*\.\.\s+automodule::\s*([A-Za-z0-9_.]+)\s*$")
@@ -82,7 +83,9 @@ def monkey_patch_find_autosummary_in_lines(
                     name = name[1:]
                 if current_module and not name.startswith(current_module + "."):
                     name = f"{current_module}.{name}"
-                documented.append(AutosummaryEntry(name, toctree, template, recursive))
+                documented.append(
+                    autosummary.AutosummaryEntry(name, toctree, template, recursive)
+                )
                 continue
 
             if not line.strip() or line.startswith(base_indent + " "):
@@ -104,7 +107,9 @@ def monkey_patch_find_autosummary_in_lines(
             current_module = m.group(1).strip()
             # recurse into the automodule docstring
             documented.extend(
-                find_autosummary_in_docstring(current_module, filename=filename)
+                autosummary.find_autosummary_in_docstring(
+                    current_module, filename=filename
+                )
             )
             continue
 
