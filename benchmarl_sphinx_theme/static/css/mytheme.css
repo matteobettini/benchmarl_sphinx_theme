@@ -5,12 +5,12 @@
 }
 
 /* Remove elements */
-/*.wy-nav-content .wy-breadcrumbs-aside,*/
-/*.ea-placement,*/
-/*.ethical-rtd > div.ethical-sidebar,*/
-/*.ethical-rtd > div.ethical-footer {*/
-/*  display: none !important;*/
-/*}*/
+.wy-nav-content .wy-breadcrumbs-aside,
+.ea-placement,
+.ethical-rtd > div.ethical-sidebar,
+.ethical-rtd > div.ethical-footer {
+  display: none !important;
+}
 
 /* Navigation */
 .logo {
@@ -23,33 +23,33 @@
 .wy-side-nav-search > a {
   color: black;
 }
-/*.wy-side-nav-search input[type="text"] {*/
-/*  border: none;*/
-/*  box-shadow: none;*/
-/*  border-radius: 0;*/
-/*  font-size: inherit;*/
-/*}*/
-/*.wy-menu-vertical li.current a,*/
-/*.wy-menu-vertical li.toctree-l1.current > a {*/
-/*  border: none;*/
-/*}*/
+.wy-side-nav-search input[type="text"] {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: inherit;
+}
+.wy-menu-vertical li.current a,
+.wy-menu-vertical li.toctree-l1.current > a {
+  border: none;
+}
 
-/*.wy-nav-top {*/
-/*  background: rgb(243,244,247);*/
-/*  color: #343131;*/
-/*  background-image: url(https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/benchmarl_sphinx_theme/static/img/benchmarl_logo.png);*/
-/*  background-repeat: no-repeat;*/
-/*  background-position: center;*/
-/*  background-size: 36px;*/
-/*}*/
+.wy-nav-top {
+  background: rgb(243,244,247);
+  color: #343131;
+  background-image: url(https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/benchmarl_sphinx_theme/static/img/benchmarl_logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 36px;
+}
 
-/*.wy-nav-top {*/
-/*  padding: 0.4em .8em 0.6em;*/
-/*}*/
+.wy-nav-top {
+  padding: 0.4em .8em 0.6em;
+}
 
-/*.wy-nav-top a {*/
-/*  display: none;*/
-/*}*/
+.wy-nav-top a {
+  display: none;
+}
 
 /* Footer */
 footer, footer a, footer a:visited {
