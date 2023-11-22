@@ -8,10 +8,12 @@ class DiscordButton(Directive):
         "title": directives.unchanged,
         "url": directives.unchanged,
     }
+    has_content = True
 
     def run(self):
+        url = "\n".join(self.content)
         title = self.options.get("title", "Join our Discord community!")
-        url = self.options.get("url", "https://discord.com/invite/2XJdEenU")
+        url = self.options.get("url", url)
 
         rst = DISCORD_TEMPLATE.format(title=title, url=url)
 
