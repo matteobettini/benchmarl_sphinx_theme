@@ -1,7 +1,11 @@
 from typing import List, Optional
 
 import sphinx.ext.autosummary.generate as autosummary
-from benchmarl_sphinx_theme.extension.buttons import DiscordButton, ExampleButton
+from benchmarl_sphinx_theme.extension.buttons import (
+    DiscordButton,
+    PythonExampleButton,
+    BashExampleButton,
+)
 from benchmarl_sphinx_theme.extension.logo import logo_role
 
 
@@ -126,7 +130,8 @@ def setup(app):
     autosummary.find_autosummary_in_lines = monkey_patch_find_autosummary_in_lines
 
     app.add_directive("discord_button", DiscordButton)
-    app.add_directive("example_button", ExampleButton)
+    app.add_directive("python_example_button", PythonExampleButton)
+    app.add_directive("bash_example_button", BashExampleButton)
 
     app.add_role("python", logo_role)
     app.add_role("conda", logo_role)

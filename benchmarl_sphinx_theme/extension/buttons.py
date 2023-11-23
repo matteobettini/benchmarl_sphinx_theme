@@ -23,7 +23,7 @@ class DiscordButton(Directive):
         return [callout]
 
 
-class ExampleButton(Directive):
+class PythonExampleButton(Directive):
     option_spec = {
         "title": directives.unchanged,
         "url": directives.unchanged,
@@ -35,7 +35,27 @@ class ExampleButton(Directive):
         title = self.options.get("title", "Example")
         url = self.options.get("url", url)
 
-        rst = EXAMPLE_TEMPLATE.format(title=title, url=url)
+        rst = PYTHON_EXAMPLE_TEMPLATE.format(title=title, url=url)
+
+        callout_list = StringList(rst.split("\n"))
+        callout = nodes.paragraph()
+        self.state.nested_parse(callout_list, self.content_offset, callout)
+        return [callout]
+
+
+class BashExampleButton(Directive):
+    option_spec = {
+        "title": directives.unchanged,
+        "url": directives.unchanged,
+    }
+    has_content = True
+
+    def run(self):
+        url = "\n".join(self.content)
+        title = self.options.get("title", "Example")
+        url = self.options.get("url", url)
+
+        rst = BASH_EXAMPLE_TEMPLATE.format(title=title, url=url)
 
         callout_list = StringList(rst.split("\n"))
         callout = nodes.paragraph()
@@ -54,12 +74,23 @@ DISCORD_TEMPLATE = """
     </a>
 """  # noqa: E501
 
-EXAMPLE_TEMPLATE = """
+BASH_EXAMPLE_TEMPLATE = """
+.. raw:: html
+
+    <a class="example-button" href="{url}" target="_blank" title="{title}" style="display: inline-flex; align-items: center; justify-content: center;">
+    <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 210" preserveAspectRatio="xMidYMid" style="margin-right: 7px;">
+        <rect width="256" height="209.342" rx="5"/><path d="M28.241 21.774c-.855-.856-1.888-1.284-3.098-1.284s-2.246.432-3.11 1.296c-.852.852-1.284 1.888-1.284 3.098s.432 2.247 1.284 3.098l13.442 13.442-13.43 13.43c-.864.864-1.296 1.9-1.308 3.11.012 1.21.444 2.247 1.296 3.098.864.852 1.9 1.284 3.098 1.296 1.222 0 2.259-.432 3.123-1.296l14.935-14.947c3.135-3.123 3.135-6.258 0-9.394L28.241 21.774zm58.545 33.104c-.864-.864-1.913-1.296-3.135-1.296v-.006H54.817v.006c-1.222 0-2.26.432-3.123 1.296-.864.864-1.296 1.901-1.296 3.123 0 1.222.432 2.271 1.296 3.135.864.864 1.9 1.296 3.123 1.296v-.006H83.65v.006c1.222 0 2.27-.432 3.135-1.296.864-.864 1.296-1.913 1.296-3.135 0-1.222-.432-2.259-1.296-3.123z" fill="#FFF"/>
+    </svg>
+    {title}
+    </a>
+"""  # noqa: E501
+
+PYTHON_EXAMPLE_TEMPLATE = """
 .. raw:: html
 
   <a class="example-button" href="{url}" target="_blank" title="{title} style="display: inline-flex; align-items: center; justify-content: center;">
 
-    <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" style="margin-right: 7px;
+    <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" style="margin-right: 7px;"
       <defs
          id="defs4">
         <linearGradient
