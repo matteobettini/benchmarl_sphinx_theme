@@ -134,6 +134,7 @@ def setup(app):
     app.add_directive("bash_example_button", BashExampleButton)
 
     app.add_role("python", logo_role)
+    app.add_role("pyg", logo_role)
     app.add_role("conda", logo_role)
     app.add_role("pytorch", logo_role)
     app.add_role("colab", logo_role)
